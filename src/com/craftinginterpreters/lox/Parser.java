@@ -106,11 +106,18 @@ class Parser {
         Token name = consume(IDENTIFIER, "Expect variable name.");
         consume(COLON, "Expect ':'");
         Token type = consume(IDENTIFIER, "Expect type");
-        if (!type.lexeme.equals("int") && !type.lexeme.equals("double"))
+        TokenType valtype;
+        if (type.lexeme.equals("int"))
+            valtype = UINT;
+        else if (type.lexeme.equals("double"))
+            valtype = DOUBLE;
+        else
             throw error(previous(), "Type must be int or double");
         Expr initializer = null;
         if (match(EQUAL)) {
             initializer = expression();
+            if (initializer.valType != valtype)
+                throw error(peek(), "let lhs and rhs type not matched");
             symbolTable.addInitializedVar(name.lexeme, initializer.val);
         } else {
             symbolTable.addUninitializedVar(name.lexeme);
@@ -124,10 +131,17 @@ class Parser {
         Token name = consume(IDENTIFIER, "Expect const name.");
         consume(COLON, "Expect ':'");
         Token type = consume(IDENTIFIER, "Expect type");
-        if (!type.lexeme.equals("int") && !type.lexeme.equals("double"))
+        TokenType valtype;
+        if (type.lexeme.equals("int"))
+            valtype = UINT;
+        else if (type.lexeme.equals("double"))
+            valtype = DOUBLE;
+        else
             throw error(previous(), "Type must be int or double");
         consume(EQUAL, "Expect '='");
         Expr initializer = expression();
+        if (initializer.valType != valtype)
+            throw error(peek(), "let lhs and rhs type not matched");
         symbolTable.addConstVar(name.lexeme, initializer.val);
         consume(SEMICOLON, "Expect ';' after const declaration.");
         return new Stmt.Const(name, initializer);
