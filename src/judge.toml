@@ -3,5 +3,5 @@
 image = { source = "dockerfile", path = ".", tag = "c0" }
 
 run = [
-  "java com.craftinginterpreters.PrintData $input",
+  "java com.craftinginterpreters.lox.Lox $input",
 ]
