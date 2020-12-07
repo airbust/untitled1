@@ -141,6 +141,8 @@ class Parser {
 
     private Stmt.Function function(String kind) {
         Token name = consume(IDENTIFIER, "Expect " + kind + " name.");
+        if (symbolTable.isGlobalConstVar(name.lexeme) || symbolTable.isGlobalVar(name.lexeme))
+            throw error(name, "function name exists or same with global var");
         consume(LEFT_PAREN, "Expect '(' after " + kind + " name.");
         List<Token> parameters = new ArrayList<>();
         if (!check(RIGHT_PAREN)) {
@@ -160,8 +162,28 @@ class Parser {
             throw error(previous(), "ty must be void or int or double");
 
         consume(LEFT_BRACE, "Expect '{' before " + kind + " body.");
-        List<Stmt> body = block();
+        List<Stmt> body = function_block(ty);
+        symbolTable.addGlobalConstVar(name.lexeme, name.lexeme);
         return new Stmt.Function(name, parameters, body);
+    }
+
+    private List<Stmt> function_block(Token type) {
+        List<Stmt> statements = new ArrayList<>();
+        String ty = type.lexeme;
+        while (!check(RIGHT_BRACE) && !isAtEnd()) {
+            Stmt stmt = declaration();
+            if (stmt instanceof Stmt.Return) {
+                if (!(ty.equals("void") && ((Stmt.Return) stmt).value == null)
+                && !(ty.equals("int") && (((Stmt.Return) stmt).value.valType == UINT))
+                && !(ty.equals("double") && (((Stmt.Return) stmt).value.valType == DOUBLE))) {
+                    throw error(type, "return type not matched");
+                }
+            }
+            statements.add(stmt);
+        }
+
+        consume(RIGHT_BRACE, "Expect '}' after block.");
+        return statements;
     }
 
     private List<Stmt> block() {
@@ -256,7 +278,7 @@ class Parser {
             }
         }
 
-        return unary();
+        return expr;
     }
 
     private Expr unary() {

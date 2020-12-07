@@ -39,6 +39,14 @@ class SymbolTable {
         return vars.get(name) == null;
     }
 
+    boolean isGlobalVar(String name) {
+        return globalVars.containsKey(name);
+    }
+
+    boolean isGlobalConstVar(String name) {
+        return globalConstVars.containsKey(name);
+    }
+
     void addGlobalInitializedVar(String name, Object value) {
         if (globalVars.containsKey(name))
             throw new RuntimeException();
