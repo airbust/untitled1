@@ -1,4 +1,4 @@
 FROM java:8
 WORKDIR /app/
 COPY ./* ./
-RUN javac ./com/craftinginterpreters/lox/Lox.java
+RUN javac -cp . com/craftinginterpreters/lox/Lox.java
