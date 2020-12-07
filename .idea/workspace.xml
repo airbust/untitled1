@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0c04d975-9f12-49d5-9350-0e00c6131fc5" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+    <option name="PARALLEL_COMPILATION" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="untitled1" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package-info" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1iXDnDRGHkrAso7RHpeRmNkrfYD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1602044605121" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RunManager" selected="Application.Lox">
+    <configuration name="AstPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.craftinginterpreters.lox.AstPrinter" />
+      <module name="untitled1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.craftinginterpreters.lox.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GenerateAst" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.craftinginterpreters.tool.GenerateAst" />
+      <module name="untitled1" />
+      <option name="PROGRAM_PARAMETERS" value="D:\test\untitled1\src\com\craftinginterpreters\lox" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.craftinginterpreters.tool.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Lox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.craftinginterpreters.lox.Lox" />
+      <module name="untitled1" />
+      <option name="PROGRAM_PARAMETERS" value="test01.in" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.craftinginterpreters.lox.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="untitled1" />
+      <option name="PROGRAM_PARAMETERS" value="test01.in" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <module name="untitled1" />
+      <option name="PROGRAM_PARAMETERS" value="test01.in" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Lox" />
+      <item itemvalue="Application.GenerateAst" />
+      <item itemvalue="Application.AstPrinter" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Lox" />
+        <item itemvalue="Application.GenerateAst" />
+        <item itemvalue="Application.AstPrinter" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0c04d975-9f12-49d5-9350-0e00c6131fc5" name="Default Changelist" comment="" />
+      <created>1583073768453</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583073768453</updated>
+      <workItem from="1602045229425" duration="38000" />
+      <workItem from="1602045495787" duration="41000" />
+      <workItem from="1602052197966" duration="1014000" />
+      <workItem from="1602054439098" duration="168000" />
+      <workItem from="1602054630628" duration="157000" />
+      <workItem from="1602056615044" duration="91000" />
+      <workItem from="1602057188159" duration="88000" />
+      <workItem from="1602870171368" duration="130000" />
+      <workItem from="1605510214404" duration="85000" />
+      <workItem from="1605514552562" duration="1976000" />
+      <workItem from="1605529750759" duration="463000" />
+      <workItem from="1605533237942" duration="1897000" />
+      <workItem from="1605542942004" duration="5367000" />
+      <workItem from="1605579944409" duration="903000" />
+      <workItem from="1605601433889" duration="299000" />
+      <workItem from="1605606442148" duration="7386000" />
+      <workItem from="1605681258806" duration="75000" />
+      <workItem from="1605681422957" duration="1864000" />
+      <workItem from="1605683332614" duration="4514000" />
+      <workItem from="1605689895575" duration="5253000" />
+      <workItem from="1605701252116" duration="359000" />
+      <workItem from="1605793329017" duration="5711000" />
+      <workItem from="1606035274958" duration="1084000" />
+      <workItem from="1606141586465" duration="2251000" />
+      <workItem from="1606229803937" duration="1856000" />
+      <workItem from="1606488274421" duration="1440000" />
+      <workItem from="1606922408512" duration="4703000" />
+      <workItem from="1606966442766" duration="2301000" />
+      <workItem from="1606990646446" duration="1392000" />
+      <workItem from="1606999793254" duration="7095000" />
+      <workItem from="1607060287207" duration="6812000" />
+      <workItem from="1607069295069" duration="1104000" />
+      <workItem from="1607077973509" duration="2495000" />
+      <workItem from="1607226515451" duration="128000" />
+      <workItem from="1607315553229" duration="9204000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607329347847">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1607329347847" />
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605542984630">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1605542984630" />
+    <state x="563" y="86" width="488" height="588" key="#xdebugger.evaluate" timestamp="1607069790903">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="563" y="86" width="488" height="588" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1607069790903" />
+    <state width="1237" height="245" key="GridCell.Tab.0.bottom" timestamp="1607329408151">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="245" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1607329408151" />
+    <state width="1237" height="245" key="GridCell.Tab.0.center" timestamp="1607329408151">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="245" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1607329408151" />
+    <state width="1237" height="245" key="GridCell.Tab.0.left" timestamp="1607329408150">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="245" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1607329408150" />
+    <state width="1237" height="245" key="GridCell.Tab.0.right" timestamp="1607329408151">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="245" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1607329408151" />
+    <state width="1032" height="335" key="GridCell.Tab.1.bottom" timestamp="1607070408029">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1032" height="335" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1607070408029" />
+    <state width="1032" height="335" key="GridCell.Tab.1.center" timestamp="1607070408029">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1032" height="335" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1607070408029" />
+    <state width="1032" height="335" key="GridCell.Tab.1.left" timestamp="1607070408029">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1032" height="335" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1607070408029" />
+    <state width="1032" height="335" key="GridCell.Tab.1.right" timestamp="1607070408029">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1032" height="335" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1607070408029" />
+    <state x="119" y="0" width="914" height="680" key="SettingsEditor" timestamp="1607067199228">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="119" y="0" width="914" height="680" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1607067199228" />
+    <state x="56" y="0" key="new project wizard" timestamp="1605606478844">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="56" y="0" key="new project wizard/0.0.1280.680@0.0.1280.680" timestamp="1605606478844" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1602054168571">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1602054168571" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>javalib</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>untitled1</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
