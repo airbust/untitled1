@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="0c04d975-9f12-49d5-9350-0e00c6131fc5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Lox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Lox.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/untitled1/judge.toml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/judge.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Lox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Stmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test01.in" beforeDir="false" afterPath="$PROJECT_DIR$/test01.in" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +51,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
-  <component name="RunManager" selected="Application.PrintData">
+  <component name="RunManager" selected="Application.Lox">
     <configuration name="AstPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.craftinginterpreters.lox.AstPrinter" />
       <module name="untitled1" />
@@ -120,8 +124,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PrintData" />
         <item itemvalue="Application.Lox" />
+        <item itemvalue="Application.PrintData" />
         <item itemvalue="Application.GenerateAst" />
         <item itemvalue="Application.AstPrinter" />
         <item itemvalue="Application.Main" />
@@ -175,7 +179,8 @@
       <workItem from="1607315553229" duration="11548000" />
       <workItem from="1607338980828" duration="391000" />
       <workItem from="1607339901251" duration="73000" />
-      <workItem from="1607340098092" duration="23000" />
+      <workItem from="1607340098092" duration="586000" />
+      <workItem from="1607349732056" duration="2145000" />
     </task>
     <servers />
   </component>
@@ -183,10 +188,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607340121288">
+    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1607340542928">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1607340121288" />
+    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1607340542928" />
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605542984630">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -195,22 +200,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="563" y="86" width="488" height="588" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1607069790903" />
-    <state width="1237" height="245" key="GridCell.Tab.0.bottom" timestamp="1607340130463">
+    <state width="1237" height="245" key="GridCell.Tab.0.bottom" timestamp="1607351949315">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="245" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1607340130463" />
-    <state width="1237" height="245" key="GridCell.Tab.0.center" timestamp="1607340130462">
+    <state width="1237" height="245" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1607351949315" />
+    <state width="1237" height="245" key="GridCell.Tab.0.center" timestamp="1607351949315">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="245" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1607340130462" />
-    <state width="1237" height="245" key="GridCell.Tab.0.left" timestamp="1607340130462">
+    <state width="1237" height="245" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1607351949315" />
+    <state width="1237" height="245" key="GridCell.Tab.0.left" timestamp="1607351949314">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="245" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1607340130462" />
-    <state width="1237" height="245" key="GridCell.Tab.0.right" timestamp="1607340130463">
+    <state width="1237" height="245" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1607351949314" />
+    <state width="1237" height="245" key="GridCell.Tab.0.right" timestamp="1607351949315">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="245" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1607340130463" />
+    <state width="1237" height="245" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1607351949315" />
     <state width="1032" height="335" key="GridCell.Tab.1.bottom" timestamp="1607070408029">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
