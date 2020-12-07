@@ -22,6 +22,7 @@ abstract class Expr {
     Assign(Token name, Expr value) {
       this.name = name;
       this.value = value;
+      this.valType = null;
     }
 
     @Override

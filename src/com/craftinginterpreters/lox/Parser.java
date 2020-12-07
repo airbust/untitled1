@@ -201,17 +201,18 @@ class Parser {
         Expr expr = comparison();
 
         if (match(EQUAL)) {
-            Token equals = previous();
             Expr value = assignment();
 
             if (expr instanceof Expr.Variable) {
                 Token name = ((Expr.Variable)expr).name;
-                return new Expr.Assign(name, value);
+                if (value.valType != null)
+                    return new Expr.Assign(name, value);
+                else
+                    throw error(peek(), "assign rhs should not be void");
             } else if (expr instanceof Expr.ConstVariable) {
                 throw error(((Expr.ConstVariable) expr).name, "value of const cannot be changed");
             }
-            throw error(peek(), "assignment err");
-           // error(equals, "Invalid assignment target.");
+            throw error(peek(), "Invalid assignment target.");
         }
 
         return expr;
