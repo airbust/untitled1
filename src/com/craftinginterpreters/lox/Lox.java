@@ -1,8 +1,6 @@
 package com.craftinginterpreters.lox;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,38 +10,28 @@ public class Lox {
   static boolean hadError = false;
 
   public static void main(String[] args) throws IOException {
-    runFile(args[0]);
+    runFile(args[0], args[1]);
   }
 
-  private static void runFile(String path) throws IOException {
-    byte[] bytes = Files.readAllBytes(Paths.get(path));
-    run(new String(bytes, Charset.defaultCharset()));
+  private static void runFile(String path1, String path2) throws IOException {
+    byte[] bytes = Files.readAllBytes(Paths.get(path1));
+    run(new String(bytes, Charset.defaultCharset()), path2);
 
     // Indicate an error in the exit code.
     if (hadError) System.exit(65);
   }
 
-  private static void runPrompt() throws IOException {
-    InputStreamReader input = new InputStreamReader(System.in);
-    BufferedReader reader = new BufferedReader(input);
-
-    for (;;) {
-      System.out.print("> ");
-      String line = reader.readLine();
-      if (line == null) break;
-      run(line);
-      hadError = false;
-    }
-  }
-
-  private static void run(String source) {
+  private static void run(String source, String dest) throws IOException {
     Scanner scanner = new Scanner(source);
     List<Token> tokens = scanner.scanTokens();
     if (hadError) System.exit(65);
     Program program = new Program();
     Parser parser = new Parser(tokens, program.getNextGlobalOffset());
     parser.parse(program);
-    int sum = program.get_start().getInstructionCount();
+    DataOutputStream out = new DataOutputStream(new FileOutputStream(new File(dest)));
+    byte[] res = new Output().gen(program);
+    out.write(res);
+    /*int sum = program.get_start().getInstructionCount();
 
     System.out.println("_start:\n");
     for (Instruction ins : program.get_start().getInstructionList()) {
@@ -60,7 +48,7 @@ public class Lox {
       System.out.println("-------------------");
     }
     System.out.println(sum);
-    System.out.println("success!");
+    System.out.println("success!");*/
   }
 
   static void error(int line, String message) {

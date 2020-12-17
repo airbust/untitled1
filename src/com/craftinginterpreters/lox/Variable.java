@@ -8,6 +8,7 @@ class Variable {
     private Type type;
     private int size;
     private long addr;
+    private String value;
 
     Variable() {
         this.isConst = false;
@@ -32,6 +33,14 @@ class Variable {
         else size = 8;
     }
 
+    String getValue() {
+        return value;
+    }
+
+    void setValue(String value) {
+        this.value = value;
+    }
+
     boolean isConst() {
         return isConst;
     }
@@ -50,6 +59,10 @@ class Variable {
 
     long getAddr() {
         return addr;
+    }
+
+    int getSize() {
+        return size;
     }
 
     public void setConst(boolean aConst) {

@@ -3,11 +3,15 @@ package com.craftinginterpreters.lox;
 class Instruction {
     private InstructionType instructionType;
     private int size;
-    long i64;
-    private double f64;
+    long i64 = Long.MIN_VALUE;
+    double f64 = Double.MAX_VALUE;
 
     boolean isBreak() {
         return i64 == Long.MAX_VALUE;
+    }
+
+    boolean isFloat() {
+        return i64 == Long.MIN_VALUE && f64 != Double.MAX_VALUE;
     }
 
     Instruction(InstructionType instructionType) {
@@ -23,6 +27,14 @@ class Instruction {
         this.instructionType = instructionType;
         this.f64 = f64;
         this.size = 8;
+    }
+
+    int getSize() {
+        return size;
+    }
+
+    int getOp() {
+        return instructionType.ordinal();
     }
 
     @Override

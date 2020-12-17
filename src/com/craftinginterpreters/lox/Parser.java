@@ -126,10 +126,8 @@ class Parser {
     private void returnStatement(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
         if (fn.getReturnType() != Type.VOID)
             fn.addInstruction(new Instruction(arga, 0));
-        Token keyword = previous();
-        Expr value = null;
         if (!check(SEMICOLON)) {
-            value = expression(symbolTable, functionTable, fn);
+            Expr value = expression(symbolTable, functionTable, fn);
             if (value.valType != fn.getReturnType())
                 throw error(peek(), "function return type err");
             if (fn.getReturnType() != Type.VOID)
@@ -309,6 +307,14 @@ class Parser {
         globalStrTable.addStr(name.lexeme);
         function.setFname(fn_name.getAddr());
         functionTable.addFunction(function);
+    }
+
+    private void functionBlock(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
+        while (!check(RIGHT_BRACE) && !isAtEnd()) {
+            declaration(symbolTable, functionTable, fn);
+        }
+
+        consume(RIGHT_BRACE, "Expect '}' after block.");
     }
 
     private void block(SymbolTable symbolTable, FunctionTable functionTable, Function fn, int while_st) {
@@ -642,6 +648,7 @@ class Parser {
         } else if (match(STRING)) {
             Variable var = new Variable("", Kind.GLOBAL, Type.STRING,
                     previous().lexeme.length(), nextGlobalOffset++, true);
+            var.setValue(previous().lexeme);
             globalStrTable.addStr(previous().lexeme);
             SymbolTable globals = symbolTable.getGlobal();
             globals.addVar(var);
