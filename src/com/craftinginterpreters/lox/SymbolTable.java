@@ -1,95 +1,69 @@
 package com.craftinginterpreters.lox;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.craftinginterpreters.lox.TokenType.*;
 
 class SymbolTable {
-    private static SymbolTable symbolTable = null;
-    private Map<String, Object> globalVars = new HashMap<>();
-    private Map<String, Object> globalConstVars = new HashMap<>();
-    private Map<String, Object> vars = new HashMap<>();
-    private Map<String, Object> constVars = new HashMap<>();
+    private SymbolTable parent;
+    private List<Variable> table = new ArrayList<>();
 
-    private SymbolTable() {}
-    public static SymbolTable getInstance() {
-        if (symbolTable == null)
-            symbolTable = new SymbolTable();
-        return symbolTable;
+    SymbolTable() {}
+
+    SymbolTable(SymbolTable parent) {
+        this.parent = parent;
     }
 
-    TokenType getType(String name) {
-        if (((Object) vars.get(name)) instanceof Long)
-            return UINT;
-        if (((Object) vars.get(name)) instanceof Double)
-            return DOUBLE;
-        if (((Object) constVars.get(name)) instanceof Long)
-            return UINT;
-        if (((Object) constVars.get(name)) instanceof Double)
-            return DOUBLE;
-        return null;
+    void clear() {
+        table.clear();
     }
 
-    boolean isConstVar(String name) {
-        return constVars.containsKey(name);
+    SymbolTable getParent() {
+        return parent;
     }
 
-    boolean isUninitializedVar(String name) {
-        return vars.get(name) == null;
+    List<Variable> getTable() {
+        return table;
     }
 
-    boolean isGlobalVar(String name) {
-        return globalVars.containsKey(name);
+    boolean isDeclared(String name) {
+        if (name.equals(""))
+            return false;
+        for (Variable var : table) {
+            if (var.getName().equals(name))
+                return true;
+        }
+        return false;
     }
 
-    boolean isGlobalConstVar(String name) {
-        return globalConstVars.containsKey(name);
+    boolean isGlobalTable() {
+        return parent == null;
     }
 
-    void addGlobalInitializedVar(String name, Object value) {
-        if (globalVars.containsKey(name))
-            throw new RuntimeException();
-        if (globalConstVars.containsKey(name))
-            throw new RuntimeException();
-        globalVars.put(name, value);
+    SymbolTable getGlobal() {
+        if (parent == null)
+            return this;
+        return parent.getGlobal();
     }
 
-    void addGlobalUninitializedVar(String name) {
-        if (globalVars.containsKey(name))
-            throw new RuntimeException();
-        if (globalConstVars.containsKey(name))
-            throw new RuntimeException();
-        globalVars.put(name, null);
+    Variable getVar(String name) {
+        if (name.equals(""))
+            return null;
+        for (Variable var : table) {
+            if (var.getName().equals(name))
+                return var;
+        }
+        if (parent == null)
+            return null;
+        return parent.getVar(name);
     }
 
-    void addGlobalConstVar(String name, Object value) {
-        if (globalVars.containsKey(name))
-            throw new RuntimeException();
-        if (globalConstVars.containsKey(name))
-            throw new RuntimeException();
-        globalConstVars.put(name, value);
-    }
-
-    void checkDuplicate(String name) {
-        if (vars.containsKey(name))
-            throw new RuntimeException();
-        if (constVars.containsKey(name))
-            throw new RuntimeException();
-    }
-
-    void addInitializedVar(String name, Object value) {
-        checkDuplicate(name);
-        vars.put(name, value);
-    }
-
-    void addUninitializedVar(String name) {
-        checkDuplicate(name);
-        vars.put(name, null);
-    }
-
-    void addConstVar(String name, Object value) {
-        checkDuplicate(name);
-        constVars.put(name, value);
+    void addVar(Variable var) {
+        if (isDeclared(var.getName()))
+            System.exit(64);
+        table.add(var);
     }
 }

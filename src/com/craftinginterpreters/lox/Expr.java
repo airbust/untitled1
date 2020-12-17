@@ -5,7 +5,7 @@ import java.util.List;
 import static com.craftinginterpreters.lox.TokenType.*;
 
 abstract class Expr {
-  TokenType valType;
+  Type valType;
   Object val;
 
   interface Visitor<R> {
@@ -19,10 +19,8 @@ abstract class Expr {
     R visitConstVariableExpr(ConstVariable expr);
   }
   static class Assign extends Expr {
-    Assign(Token name, Expr value) {
-      this.name = name;
-      this.value = value;
-      this.valType = null;
+    Assign(Type valtype) {
+      this.valType = Type.VOID;
     }
 
     @Override
@@ -30,8 +28,6 @@ abstract class Expr {
       return visitor.visitAssignExpr(this);
     }
 
-    final Token name;
-    final Expr value;
   }
   static class Binary extends Expr {
     Binary(Expr left, Token operator, Expr right) {
@@ -51,20 +47,14 @@ abstract class Expr {
     final Expr right;
   }
   static class Call extends Expr {
-    Call(Expr callee, Token paren, List<Expr> arguments) {
-      this.callee = callee;
-      this.paren = paren;
-      this.arguments = arguments;
+    Call(Type valtype) {
+      this.valType = valtype;
     }
 
     @Override
     <R> R accept(Visitor<R> visitor) {
       return visitor.visitCallExpr(this);
     }
-
-    final Expr callee;
-    final Token paren;
-    final List<Expr> arguments;
   }
   static class Grouping extends Expr {
     Grouping(Expr expression) {
@@ -83,7 +73,12 @@ abstract class Expr {
   static class Literal extends Expr {
     Literal(Token token) {
       this.val = token.literal;
-      this.valType = token.type;
+      if (token.type == UINT || token.type == CHAR)
+        this.valType = Type.INT;
+      else if (token.type == DOUBLE)
+        this.valType = Type.DOUBLE;
+      else if (token.type == STRING)
+        this.valType = Type.STRING;
     }
 
     @Override
@@ -98,11 +93,6 @@ abstract class Expr {
       this.operator = operator;
       this.right = right;
       this.valType = right.valType;
-      if (this.valType == UINT) {
-        this.val = -(Long) this.right.val;
-      } else if (this.valType == DOUBLE) {
-        this.val = -(Double) this.right.val;
-      }
     }
 
     @Override
@@ -114,7 +104,7 @@ abstract class Expr {
     final Expr right;
   }
   static class Variable extends Expr {
-    Variable(Token name, TokenType type) {
+    Variable(Token name, Type type) {
       this.name = name;
       this.valType = type;
     }
@@ -127,7 +117,7 @@ abstract class Expr {
     final Token name;
   }
   static class ConstVariable extends Expr {
-    ConstVariable(Token name, TokenType type) {
+    ConstVariable(Token name, Type type) {
       this.name = name;
       this.valType = type;
     }
