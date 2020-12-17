@@ -31,7 +31,8 @@ public class Lox {
     DataOutputStream out = new DataOutputStream(new FileOutputStream(new File(dest)));
     byte[] res = new Output().gen(program);
     out.write(res);
-    /*int sum = program.get_start().getInstructionCount();
+
+    int sum = program.get_start().getInstructionCount();
 
     System.out.println("_start:\n");
     for (Instruction ins : program.get_start().getInstructionList()) {
@@ -48,7 +49,7 @@ public class Lox {
       System.out.println("-------------------");
     }
     System.out.println(sum);
-    System.out.println("success!");*/
+    System.out.println("success!");
   }
 
   static void error(int line, String message) {

@@ -37,6 +37,10 @@ class Instruction {
         return instructionType.getNum();
     }
 
+    InstructionType getType() {
+        return instructionType;
+    }
+
     @Override
     public String toString() {
        return instructionType.toString() + " " + i64;

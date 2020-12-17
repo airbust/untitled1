@@ -1,5 +1,5 @@
 package com.craftinginterpreters.lox;
 
 enum Kind {
-    PARAM, FUNC, VAR, GLOBAL
+    PARAM, VAR, GLOBAL
 }

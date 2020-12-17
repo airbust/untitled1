@@ -2,6 +2,7 @@ package com.craftinginterpreters.lox;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import static com.craftinginterpreters.lox.TokenType.*;
 import static com.craftinginterpreters.lox.InstructionType.*;
@@ -12,7 +13,6 @@ class Parser {
     private final List<Token> tokens;
     private int current = 0;
     private int nextGlobalOffset;
-    private SymbolTable symbolTable = new SymbolTable();
 
     Parser(List<Token> tokens, int nextGlobalOffset) {
         this.tokens = tokens;
@@ -292,7 +292,24 @@ class Parser {
         consume(LEFT_BRACE, "Expect '{' before function body.");
         block(newSymbolTable, functionTable, function, -1);
 
-     // needed when there is no return in block
+        // return check
+        if (function.getReturnType() != Type.VOID) {
+            if (function.getInstruction(function.getInstructionCount() - 1).getType() != ret)
+                throw error(previous(), "fail return check");
+            int top = 0;
+            for (int i = 0; i < function.getInstructionCount(); i++) {
+                if (function.getInstruction(i).getType() == arga)
+                    top++;
+                else if (function.getInstruction(i).getType() == ret)
+                    top--;
+                if (top < 0)
+                    throw error(previous(), "fail return check");
+            }
+            if (top != 0)
+                throw error(previous(), "fail return check");
+        }
+
+        // needed when there is no return in block
         function.addInstruction(new Instruction(ret));
         SymbolTable global = symbolTable.getGlobal();
         Variable fn_name = new Variable();
@@ -306,14 +323,6 @@ class Parser {
         global.addVar(fn_name);
         function.setFname(fn_name.getAddr());
         functionTable.addFunction(function);
-    }
-
-    private void functionBlock(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
-        while (!check(RIGHT_BRACE) && !isAtEnd()) {
-            declaration(symbolTable, functionTable, fn);
-        }
-
-        consume(RIGHT_BRACE, "Expect '}' after block.");
     }
 
     private void block(SymbolTable symbolTable, FunctionTable functionTable, Function fn, int while_st) {
