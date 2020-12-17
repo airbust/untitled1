@@ -81,7 +81,7 @@ class Parser {
         }
         if (match(LEFT_BRACE)) {
             SymbolTable newSymbolTable = new SymbolTable(symbolTable);
-            block(symbolTable, functionTable, fn, while_st);
+            block(newSymbolTable, functionTable, fn, while_st);
             return;
         }
         if (match(SEMICOLON)) {
@@ -134,7 +134,8 @@ class Parser {
                 throw error(peek(), "function return type err");
             if (fn.getReturnType() != Type.VOID)
                 fn.addInstruction(new Instruction(store64));
-        }
+        } else if (fn.getReturnType() != Type.VOID)
+            throw error(peek(), "function return type err");
         fn.addInstruction(new Instruction(ret));
         consume(SEMICOLON, "Expect ';' after return value.");
     }
@@ -337,6 +338,8 @@ class Parser {
                 else
                     throw error(peek(), "assign rhs should not be void");
                 Expr value = assignment(symbolTable, functionTable, fn);
+                if (l_expr.getType() != value.valType)
+                    throw error(peek(), "l_expr and value type not same");
                 fn.addInstruction(new Instruction(store64));
                 return new Expr.Assign(Type.VOID);
             }
