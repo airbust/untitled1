@@ -48,4 +48,8 @@ enum InstructionType {
     InstructionType(int num) {
         this.num = num;
     }
+
+    int getNum() {
+        return num;
+    }
 }

@@ -7,7 +7,6 @@ class Program {
     private FunctionTable functions;
     private Function _start;
     private int nextGlobalOffset;
-    private GlobalStrTable globalStrTable = GlobalStrTable.getInstance();
 
     Program() {
         globals = new SymbolTable();
@@ -28,8 +27,8 @@ class Program {
         fn_name.setType(Type.STRING);
         fn_name.setAddr(nextGlobalOffset++);
         fn_name.setSize(6);
+        fn_name.setValue("_start");
         globals.addVar(fn_name);
-        globalStrTable.addStr("_start");
     }
 
     Function getFunction(String name) {
@@ -82,13 +81,5 @@ class Program {
 
     public void setNextGlobalOffset(int nextGlobalOffset) {
         this.nextGlobalOffset = nextGlobalOffset;
-    }
-
-    public GlobalStrTable getGlobalStrTable() {
-        return globalStrTable;
-    }
-
-    public void setGlobalStrTable(GlobalStrTable globalStrTable) {
-        this.globalStrTable = globalStrTable;
     }
 }

@@ -3,12 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="0c04d975-9f12-49d5-9350-0e00c6131fc5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/GlobalStrTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Instruction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Instruction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Lox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Lox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Output.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Output.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Instruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Instruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Lox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Output.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Output.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Program.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Variable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Variable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/judge.toml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/judge.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/GlobalStrTable.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Variable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Program.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +89,7 @@
     <configuration name="Lox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.craftinginterpreters.lox.Lox" />
       <module name="untitled1" />
-      <option name="PROGRAM_PARAMETERS" value="D:\test01.in" />
+      <option name="PROGRAM_PARAMETERS" value="D:\test01.in D:\out" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.craftinginterpreters.lox.*" />
@@ -189,7 +194,7 @@
       <workItem from="1607946128306" duration="1595000" />
       <workItem from="1608005565922" duration="4823000" />
       <workItem from="1608129102586" duration="13010000" />
-      <workItem from="1608176585843" duration="41734000" />
+      <workItem from="1608176585843" duration="43656000" />
     </task>
     <servers />
   </component>
@@ -197,10 +202,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608216705947">
+    <state x="138" y="0" key="#Java_Type_Renderers" timestamp="1608225804650">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1608216705947" />
+    <state x="138" y="0" key="#Java_Type_Renderers/0.0.1280.680@0.0.1280.680" timestamp="1608225804650" />
+    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608224899978">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="191" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1608224899978" />
     <state x="705" y="49" key="#com.intellij.ide.util.MemberChooser" timestamp="1608222123148">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -209,54 +218,58 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="262" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1608012664848" />
-    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608138213881">
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608225329769">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1608138213881" />
-    <state x="792" y="37" width="488" height="587" key="#xdebugger.evaluate" timestamp="1608211746441">
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1608225329769" />
+    <state x="186" y="96" key="#org.jetbrains.debugger.memory.view.InstancesWindow" timestamp="1608225533462">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="792" y="37" width="488" height="587" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1608211746441" />
-    <state width="1237" height="2" key="GridCell.Tab.0.bottom" timestamp="1608221047032">
+    <state x="186" y="96" key="#org.jetbrains.debugger.memory.view.InstancesWindow/0.0.1280.680@0.0.1280.680" timestamp="1608225533462" />
+    <state x="792" y="37" width="488" height="587" key="#xdebugger.evaluate" timestamp="1608226038063">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1608221047032" />
-    <state width="1237" height="2" key="GridCell.Tab.0.center" timestamp="1608221047031">
+    <state x="792" y="37" width="488" height="587" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1608226038063" />
+    <state width="1237" height="511" key="GridCell.Tab.0.bottom" timestamp="1608226574024">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1608221047031" />
-    <state width="1237" height="2" key="GridCell.Tab.0.left" timestamp="1608221047030">
+    <state width="1237" height="511" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1608226574024" />
+    <state width="1237" height="511" key="GridCell.Tab.0.center" timestamp="1608226574023">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1608221047030" />
-    <state width="1237" height="2" key="GridCell.Tab.0.right" timestamp="1608221047032">
+    <state width="1237" height="511" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1608226574023" />
+    <state width="1237" height="511" key="GridCell.Tab.0.left" timestamp="1608226574023">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="2" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1608221047032" />
-    <state width="1237" height="169" key="GridCell.Tab.1.bottom" timestamp="1608220231831">
+    <state width="1237" height="511" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1608226574023" />
+    <state width="1237" height="511" key="GridCell.Tab.0.right" timestamp="1608226574023">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="169" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1608220231831" />
-    <state width="1237" height="169" key="GridCell.Tab.1.center" timestamp="1608220231831">
+    <state width="1237" height="511" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1608226574023" />
+    <state width="1237" height="511" key="GridCell.Tab.1.bottom" timestamp="1608226574025">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="169" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1608220231831" />
-    <state width="1237" height="169" key="GridCell.Tab.1.left" timestamp="1608220231831">
+    <state width="1237" height="511" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1608226574025" />
+    <state width="1237" height="511" key="GridCell.Tab.1.center" timestamp="1608226574024">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="169" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1608220231831" />
-    <state width="1237" height="169" key="GridCell.Tab.1.right" timestamp="1608220231831">
+    <state width="1237" height="511" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1608226574024" />
+    <state width="1237" height="511" key="GridCell.Tab.1.left" timestamp="1608226574024">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="169" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1608220231831" />
+    <state width="1237" height="511" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1608226574024" />
+    <state width="1237" height="511" key="GridCell.Tab.1.right" timestamp="1608226574024">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="511" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1608226574024" />
     <state x="119" y="0" width="914" height="680" key="SettingsEditor" timestamp="1607067199228">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="119" y="0" width="914" height="680" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1607067199228" />
-    <state x="0" y="146" width="638" height="534" key="find.popup" timestamp="1608202659689">
+    <state x="0" y="146" width="638" height="534" key="find.popup" timestamp="1608225408008">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="0" y="146" width="638" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1608202659689" />
+    <state x="0" y="146" width="638" height="534" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1608225408008" />
     <state x="56" y="0" key="new project wizard" timestamp="1605606478844">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -267,11 +280,15 @@
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1608180774067" />
   </component>
   <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="program.functions.functions.get(0).instructionList.get(61)" />
-      </configuration>
-    </watches-manager>
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/craftinginterpreters/lox/Output.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>

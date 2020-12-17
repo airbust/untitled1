@@ -34,7 +34,7 @@ class Instruction {
     }
 
     int getOp() {
-        return instructionType.ordinal();
+        return instructionType.getNum();
     }
 
     @Override

@@ -13,7 +13,6 @@ class Parser {
     private int current = 0;
     private int nextGlobalOffset;
     private SymbolTable symbolTable = new SymbolTable();
-    private GlobalStrTable globalStrTable = GlobalStrTable.getInstance();
 
     Parser(List<Token> tokens, int nextGlobalOffset) {
         this.tokens = tokens;
@@ -300,11 +299,11 @@ class Parser {
         fn_name.setName("");
         fn_name.setKind(Kind.GLOBAL);
         fn_name.setType(Type.STRING);
-        fn_name.setConst(false);
+        fn_name.setConst(true);
         fn_name.setSize(name.lexeme.length());
         fn_name.setAddr(nextGlobalOffset++);
+        fn_name.setValue(name.lexeme);
         global.addVar(fn_name);
-        globalStrTable.addStr(name.lexeme);
         function.setFname(fn_name.getAddr());
         functionTable.addFunction(function);
     }
@@ -646,10 +645,10 @@ class Parser {
             fn.addInstruction(new Instruction(push, Character.getNumericValue((char) previous().literal)));
             return new Expr.Literal(previous());
         } else if (match(STRING)) {
+            String value = (String) previous().literal;
             Variable var = new Variable("", Kind.GLOBAL, Type.STRING,
-                    previous().lexeme.length(), nextGlobalOffset++, true);
-            var.setValue(previous().lexeme);
-            globalStrTable.addStr(previous().lexeme);
+                    value.length(), nextGlobalOffset++, true);
+            var.setValue(value);
             SymbolTable globals = symbolTable.getGlobal();
             globals.addVar(var);
             fn.addInstruction(new Instruction(push, var.getAddr()));
