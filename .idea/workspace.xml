@@ -3,29 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="0c04d975-9f12-49d5-9350-0e00c6131fc5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Assign.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Assign.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Binary.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Binary.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Call.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Call.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$ConstVariable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Grouping.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Grouping.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Literal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Literal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Unary.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Unary.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Variable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Variable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr$Visitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Expr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/FunctionTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/FunctionTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Instruction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Instruction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/PrintData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/InstructionType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/InstructionType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Lox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Lox.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Parser$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Parser$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Program.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/PrintData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Expr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/FunctionTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/FunctionTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Instruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Instruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/InstructionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/InstructionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/tool/GenerateAst.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Lox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/tool/GenerateAst.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +192,7 @@
       <workItem from="1607946128306" duration="1595000" />
       <workItem from="1608005565922" duration="4823000" />
       <workItem from="1608129102586" duration="13010000" />
-      <workItem from="1608176585843" duration="30988000" />
+      <workItem from="1608176585843" duration="33268000" />
     </task>
     <servers />
   </component>
@@ -234,22 +220,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="792" y="37" width="488" height="587" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1608211746441" />
-    <state width="1237" height="523" key="GridCell.Tab.0.bottom" timestamp="1608212429420">
+    <state width="1237" height="523" key="GridCell.Tab.0.bottom" timestamp="1608216116276">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="523" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1608212429420" />
-    <state width="1237" height="523" key="GridCell.Tab.0.center" timestamp="1608212429420">
+    <state width="1237" height="523" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1608216116276" />
+    <state width="1237" height="523" key="GridCell.Tab.0.center" timestamp="1608216116276">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="523" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1608212429420" />
-    <state width="1237" height="523" key="GridCell.Tab.0.left" timestamp="1608212429420">
+    <state width="1237" height="523" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1608216116276" />
+    <state width="1237" height="523" key="GridCell.Tab.0.left" timestamp="1608216116276">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="523" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1608212429420" />
-    <state width="1237" height="523" key="GridCell.Tab.0.right" timestamp="1608212429420">
+    <state width="1237" height="523" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1608216116276" />
+    <state width="1237" height="523" key="GridCell.Tab.0.right" timestamp="1608216116276">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="523" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1608212429420" />
+    <state width="1237" height="523" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1608216116276" />
     <state width="1237" height="456" key="GridCell.Tab.1.bottom" timestamp="1608212108162">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

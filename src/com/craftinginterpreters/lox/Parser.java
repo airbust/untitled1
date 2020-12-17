@@ -342,8 +342,7 @@ class Parser {
             }
         }
 
-        Expr expr = comparison(symbolTable, functionTable, fn);
-        return expr;
+        return comparison(symbolTable, functionTable, fn);
     }
 
     private Expr comparison(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
@@ -521,6 +520,7 @@ class Parser {
                             "Expect ')' after '('.");
                     fn.addInstruction(new Instruction(scani));
                     return new Expr.Call(Type.INT);
+
                 case "getdouble":
                     advance();
                     consume(LEFT_PAREN,
@@ -529,6 +529,7 @@ class Parser {
                             "Expect ')' after '('.");
                     fn.addInstruction(new Instruction(scanf));
                     return new Expr.Call(Type.DOUBLE);
+
                 case "getchar":
                     advance();
                     consume(LEFT_PAREN,
@@ -537,6 +538,7 @@ class Parser {
                             "Expect ')' after '('.");
                     fn.addInstruction(new Instruction(scanc));
                     return new Expr.Call(Type.INT);
+
                 case "putln":
                     advance();
                     consume(LEFT_PAREN,
@@ -545,6 +547,7 @@ class Parser {
                             "Expect ')' after '('.");
                     fn.addInstruction(new Instruction(println));
                     return new Expr.Call(Type.VOID);
+
                 case "putint":
                     advance();
                     consume(LEFT_PAREN,
@@ -555,6 +558,7 @@ class Parser {
                             "Expect ')' after '('.");
                     fn.addInstruction(new Instruction(printi));
                     return new Expr.Call(Type.VOID);
+
                 case "putdouble":
                     advance();
                     consume(LEFT_PAREN,
@@ -565,6 +569,7 @@ class Parser {
                             "Expect ')' after '('.");
                     fn.addInstruction(new Instruction(printf));
                     return new Expr.Call(Type.VOID);
+
                 case "putchar":
                     advance();
                     consume(LEFT_PAREN,
@@ -575,6 +580,7 @@ class Parser {
                             "Expect ')' after '('.");
                     fn.addInstruction(new Instruction(printc));
                     return new Expr.Call(Type.VOID);
+
                 case "putstr":
                     advance();
                     consume(LEFT_PAREN,
@@ -609,7 +615,7 @@ class Parser {
                     } while (match(COMMA));
                 }
 
-                Token paren = consume(RIGHT_PAREN,
+                consume(RIGHT_PAREN,
                         "Expect ')' after arguments.");
 
                 fn.addInstruction(new Instruction(call, pfn.getFid()));
@@ -617,8 +623,7 @@ class Parser {
             }
         }
 
-        Expr expr = primary(symbolTable, functionTable, fn);
-        return expr;
+        return primary(symbolTable, functionTable, fn);
     }
 
     private Expr primary(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
@@ -629,7 +634,7 @@ class Parser {
             fn.addInstruction(new Instruction(push, (double) previous().literal));
             return new Expr.Literal(previous());
         } else if (match(CHAR)) {
-            fn.addInstruction(new Instruction(push, (long) previous().literal));
+            fn.addInstruction(new Instruction(push, Character.getNumericValue((char) previous().literal)));
             return new Expr.Literal(previous());
         } else if (match(STRING)) {
             Variable var = new Variable("", Kind.GLOBAL, Type.STRING,

@@ -43,8 +43,16 @@ public class Lox {
     Program program = new Program();
     Parser parser = new Parser(tokens, program.getNextGlobalOffset());
     parser.parse(program);
-    int sum = 0;
+    int sum = program.get_start().getInstructionCount();
+
+    System.out.println("_start:\n");
+    for (Instruction ins : program.get_start().getInstructionList()) {
+      System.out.println(ins);
+    }
+    System.out.println("-------------------");
+
     for (Function fn : program.getFunctions().getFunctions()) {
+      System.out.println(fn.getName() + ":\n");
       for (Instruction ins : fn.getInstructionList()) {
         System.out.println(ins);
       }
