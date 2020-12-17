@@ -354,7 +354,7 @@ class Parser {
             Expr right = term(symbolTable, functionTable, fn);
             if (expr.valType != right.valType)
                 throw error(peek(), "comparison type err");
-            if (previous().type == LESS_EQUAL) {
+            if (operator.type == LESS_EQUAL) {
                 if (right.valType == Type.INT)
                     fn.addInstruction(new Instruction(cmpi));
                 else if (right.valType == Type.DOUBLE)
@@ -363,7 +363,7 @@ class Parser {
                     throw error(previous(), "cmp type error");
                 fn.addInstruction(new Instruction(setGt));
                 fn.addInstruction(new Instruction(not));
-            } else if (previous().type == GREATER_EQUAL) {
+            } else if (operator.type == GREATER_EQUAL) {
                 if (right.valType == Type.INT)
                     fn.addInstruction(new Instruction(cmpi));
                 else if (right.valType == Type.DOUBLE)
@@ -372,7 +372,7 @@ class Parser {
                     throw error(previous(), "cmp type error");
                 fn.addInstruction(new Instruction(setLt));
                 fn.addInstruction(new Instruction(not));
-            } else if (previous().type == LESS) {
+            } else if (operator.type == LESS) {
                 if (right.valType == Type.INT)
                     fn.addInstruction(new Instruction(cmpi));
                 else if (right.valType == Type.DOUBLE)
@@ -380,7 +380,7 @@ class Parser {
                 else
                     throw error(previous(), "cmp type error");
                 fn.addInstruction(new Instruction(setLt));
-            } else if (previous().type == GREATER) {
+            } else if (operator.type == GREATER) {
                 if (right.valType == Type.INT)
                     fn.addInstruction(new Instruction(cmpi));
                 else if (right.valType == Type.DOUBLE)
@@ -388,14 +388,14 @@ class Parser {
                 else
                     throw error(previous(), "cmp type error");
                 fn.addInstruction(new Instruction(setGt));
-            } else if (previous().type == BANG_EQUAL) {
+            } else if (operator.type == BANG_EQUAL) {
                 if (right.valType == Type.INT)
                     fn.addInstruction(new Instruction(cmpi));
                 else if (right.valType == Type.DOUBLE)
                     fn.addInstruction(new Instruction(cmpf));
                 else
                     throw error(previous(), "cmp type error");
-            } else if (previous().type == EQUAL_EQUAL) {
+            } else if (operator.type == EQUAL_EQUAL) {
                 if (right.valType == Type.INT)
                     fn.addInstruction(new Instruction(cmpi));
                 else if (right.valType == Type.DOUBLE)
@@ -714,26 +714,5 @@ class Parser {
     private ParseError error(Token token, String message) {
         Lox.error(token, message);
         return new ParseError();
-    }
-
-    private void synchronize() {
-        advance();
-
-        while (!isAtEnd()) {
-            if (previous().type == SEMICOLON) return;
-
-            switch (peek().type) {
-                case FN:
-                case LET:
-                case CONST:
-                case WHILE:
-                case IF:
-              //  case PRINT:
-                case RETURN:
-                    return;
-            }
-
-            advance();
-        }
     }
 }

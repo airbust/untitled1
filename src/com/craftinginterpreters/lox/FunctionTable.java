@@ -12,6 +12,10 @@ class FunctionTable {
         nextFid = 1;
     }
 
+    List<Function> getFunctions() {
+        return functions;
+    }
+
     int getNextFid() {
         return nextFid++;
     }

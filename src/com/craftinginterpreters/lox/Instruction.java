@@ -1,9 +1,5 @@
 package com.craftinginterpreters.lox;
 
-import static com.craftinginterpreters.lox.InstructionType.*;
-
-import java.util.List;
-
 class Instruction {
     private InstructionType instructionType;
     private int size;
@@ -27,5 +23,10 @@ class Instruction {
         this.instructionType = instructionType;
         this.f64 = f64;
         this.size = 8;
+    }
+
+    @Override
+    public String toString() {
+       return instructionType.toString() + " " + i64;
     }
 }

@@ -1,8 +1,5 @@
 package com.craftinginterpreters.lox;
 
-import static com.craftinginterpreters.lox.InstructionType.*;
-import static com.craftinginterpreters.lox.TokenType.*;
-
 class Program {
     private int magic = 0x72303b3e;
     private int version = 0x00000001;
