@@ -17,10 +17,6 @@ class SymbolTable {
         table.clear();
     }
 
-    SymbolTable getParent() {
-        return parent;
-    }
-
     List<Variable> getTable() {
         return table;
     }

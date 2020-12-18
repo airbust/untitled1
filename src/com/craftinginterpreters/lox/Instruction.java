@@ -29,16 +29,8 @@ class Instruction {
         this.size = 8;
     }
 
-    int getSize() {
-        return size;
-    }
-
     int getOp() {
         return instructionType.getNum();
-    }
-
-    InstructionType getType() {
-        return instructionType;
     }
 
     @Override

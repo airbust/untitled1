@@ -473,7 +473,7 @@ class Parser {
     private Expr as(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
         Expr expr = unary(symbolTable, functionTable, fn);
 
-        if (match(AS)) {
+        while (match(AS)) {
             if (check(IDENTIFIER)) {
                 String ty = peek().lexeme;
                 if (ty.equals("int")) {
@@ -487,7 +487,7 @@ class Parser {
                 } else {
                     throw error(peek(), "as_expr ty must be int or double");
                 }
-                return expr;
+                advance();
             }
         }
 

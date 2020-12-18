@@ -28,24 +28,15 @@ class FunctionTable {
         return false;
     }
 
-    int addFunction(Function fn) {
+    void addFunction(Function fn) {
         if (isDeclared(fn.getName()))
             System.exit(22);
         functions.add(fn);
-        return fn.getFid();
     }
 
     Function getFunction(String name) {
         for (Function fn : functions) {
             if (fn.getName().equals(name))
-                return fn;
-        }
-        return null;
-    }
-
-    Function getFunction(int fid) {
-        for (Function fn : functions) {
-            if (fn.getFid() == fid)
                 return fn;
         }
         return null;

@@ -14,16 +14,6 @@ class Function {
     private Type returnType = Type.VOID;
     private List<Type> paramTypes = new ArrayList<>();
 
-    Function() {}
-
-    Function(String name, Type returnType, int returnSlots, int paramSlots, int locaSlots) {
-        this.name = name;
-        this.returnType = returnType;
-        this.returnSlots = returnSlots;
-        this.paramSlots = paramSlots;
-        this.locaSlots = locaSlots;
-    }
-
     int addInstruction(Instruction instruction) {
         instructionList.add(instruction);
         return instructionList.size() - 1;
@@ -96,10 +86,6 @@ class Function {
 
     public void setReturnType(Type returnType) {
         this.returnType = returnType;
-    }
-
-    public long getFname() {
-        return fname;
     }
 
     public void setFname(long fname) {

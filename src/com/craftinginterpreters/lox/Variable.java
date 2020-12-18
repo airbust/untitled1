@@ -2,7 +2,6 @@ package com.craftinginterpreters.lox;
 
 class Variable {
     private boolean isConst;
-    private int id;
     private String name;
     private Kind kind;
     private Type type;
@@ -67,10 +66,6 @@ class Variable {
 
     public void setConst(boolean aConst) {
         isConst = aConst;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void setName(String name) {
