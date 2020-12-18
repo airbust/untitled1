@@ -20,15 +20,15 @@ class Program {
         _start.setReturnType(Type.VOID);
         _start.setName("_start");
 
-        Variable fn_name = new Variable();
-        fn_name.setConst(true);
-        fn_name.setKind(Kind.GLOBAL);
-        fn_name.setName("");
-        fn_name.setType(Type.STRING);
-        fn_name.setAddr(nextGlobalOffset++);
-        fn_name.setSize(6);
-        fn_name.setValue("_start");
-        globals.addVar(fn_name);
+        Variable fnName = new Variable();
+        fnName.setConst(true);
+        fnName.setKind(Kind.GLOBAL);
+        fnName.setName("");
+        fnName.setType(Type.STRING);
+        fnName.setAddr(nextGlobalOffset++);
+        fnName.setSize(6);
+        fnName.setValue("_start");
+        globals.addVar(fnName);
     }
 
     Function getFunction(String name) {
