@@ -39,47 +39,23 @@ class Program {
         return magic;
     }
 
-    public void setMagic(int magic) {
-        this.magic = magic;
-    }
-
     public int getVersion() {
         return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
     }
 
     public SymbolTable getGlobals() {
         return globals;
     }
 
-    public void setGlobals(SymbolTable globals) {
-        this.globals = globals;
-    }
-
     public FunctionTable getFunctions() {
         return functions;
-    }
-
-    public void setFunctions(FunctionTable functions) {
-        this.functions = functions;
     }
 
     public Function get_start() {
         return _start;
     }
 
-    public void set_start(Function _start) {
-        this._start = _start;
-    }
-
     public int getNextGlobalOffset() {
         return nextGlobalOffset;
-    }
-
-    public void setNextGlobalOffset(int nextGlobalOffset) {
-        this.nextGlobalOffset = nextGlobalOffset;
     }
 }
