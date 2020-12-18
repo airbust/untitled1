@@ -88,12 +88,6 @@ class Output {
         return byteRet;
     }
 
-    private static List<Byte> char2bytes(char value) {
-        List<Byte> AB = new ArrayList<>();
-        AB.add((byte)(value&0xff));
-        return AB;
-    }
-
     private static List<Byte> string2bytes(String valueString) {
         List<Byte> AB = new ArrayList<>();
         for (int i=0;i<valueString.length();i++){

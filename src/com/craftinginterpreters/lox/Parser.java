@@ -2,7 +2,6 @@ package com.craftinginterpreters.lox;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
 import static com.craftinginterpreters.lox.TokenType.*;
 import static com.craftinginterpreters.lox.InstructionType.*;
@@ -177,13 +176,12 @@ class Parser {
         long addr = kind == Kind.GLOBAL ? nextGlobalOffset++ : fn.nextLoca();
         symbolTable.addVar(new Variable(name.lexeme, kind, valtype, addr, false));
 
-        Expr initializer = null;
         if (match(EQUAL)) {
             if (kind == Kind.GLOBAL)
                 fn.addInstruction(new Instruction(globa, addr));
-            else if (kind == Kind.VAR)
+            else // Kind.VAR
                 fn.addInstruction(new Instruction(loca, addr));
-            initializer = expression(symbolTable, functionTable, fn);
+            Expr initializer = expression(symbolTable, functionTable, fn);
             if (initializer.valType != valtype)
                 throw error(peek(), "let lhs and rhs type not matched");
             fn.addInstruction(new Instruction(store64));
@@ -209,12 +207,11 @@ class Parser {
         long addr = kind == Kind.GLOBAL ? nextGlobalOffset++ : fn.nextLoca();
         symbolTable.addVar(new Variable(name.lexeme, kind, valtype, addr, true));
 
-        Expr initializer;
         if (kind == Kind.GLOBAL)
             fn.addInstruction(new Instruction(globa, addr));
-        else if (kind == Kind.VAR)
+        else // Kind.VAR
             fn.addInstruction(new Instruction(loca, addr));
-        initializer = expression(symbolTable, functionTable, fn);
+        Expr initializer = expression(symbolTable, functionTable, fn);
         if (initializer.valType != valtype)
             throw error(peek(), "let lhs and rhs type not matched");
         fn.addInstruction(new Instruction(store64));
@@ -498,12 +495,12 @@ class Parser {
         if (match(MINUS)) {
             Token operator = previous();
             Expr right = unary(symbolTable, functionTable, fn);
-            if (right.valType != Type.INT && right.valType != Type.DOUBLE)
-                throw error(peek(), "unary type err");
             if (right.valType == Type.INT)
                 fn.addInstruction(new Instruction(negi));
             else if (right.valType == Type.DOUBLE)
                 fn.addInstruction(new Instruction(negf));
+            else
+                throw error(peek(), "unary type err");
             return new Expr.Unary(operator, right);
         }
 

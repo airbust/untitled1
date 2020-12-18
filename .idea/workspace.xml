@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0c04d975-9f12-49d5-9350-0e00c6131fc5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +185,7 @@
       <workItem from="1608005565922" duration="4823000" />
       <workItem from="1608129102586" duration="13010000" />
       <workItem from="1608176585843" duration="46583000" />
-      <workItem from="1608265128199" duration="2502000" />
+      <workItem from="1608265128199" duration="2760000" />
     </task>
     <servers />
   </component>
@@ -220,22 +221,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="792" y="37" width="488" height="587" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1608267555909" />
-    <state width="1237" height="337" key="GridCell.Tab.0.bottom" timestamp="1608267742232">
+    <state width="1237" height="337" key="GridCell.Tab.0.bottom" timestamp="1608267841625">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="337" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1608267742232" />
-    <state width="1237" height="337" key="GridCell.Tab.0.center" timestamp="1608267742232">
+    <state width="1237" height="337" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1608267841625" />
+    <state width="1237" height="337" key="GridCell.Tab.0.center" timestamp="1608267841625">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="337" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1608267742232" />
-    <state width="1237" height="337" key="GridCell.Tab.0.left" timestamp="1608267742232">
+    <state width="1237" height="337" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1608267841625" />
+    <state width="1237" height="337" key="GridCell.Tab.0.left" timestamp="1608267841625">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="337" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1608267742232" />
-    <state width="1237" height="337" key="GridCell.Tab.0.right" timestamp="1608267742232">
+    <state width="1237" height="337" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1608267841625" />
+    <state width="1237" height="337" key="GridCell.Tab.0.right" timestamp="1608267841625">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="337" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1608267742232" />
+    <state width="1237" height="337" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1608267841625" />
     <state width="1237" height="59" key="GridCell.Tab.1.bottom" timestamp="1608267704666">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -276,22 +277,6 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1608180774067" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/craftinginterpreters/lox/Parser.java</url>
-          <line>476</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/craftinginterpreters/lox/Parser.java</url>
-          <line>444</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>
