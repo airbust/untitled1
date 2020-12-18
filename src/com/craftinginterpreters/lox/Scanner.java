@@ -57,7 +57,6 @@ class Scanner {
       case ';': addToken(SEMICOLON); break;
       case '*': addToken(MUL); break;
       case '!':
-        // addToken(match('=') ? BANG_EQUAL : BANG);
         if (match('=')) {
           addToken(BANG_EQUAL);
         } else {
@@ -164,8 +163,6 @@ class Scanner {
     advance();
 
     // Trim the surrounding quotes.
-//    String value = source.substring(start + 1, current - 1);
-//    addToken(STRING, value);
     addToken(STRING, sb.toString());
   }
   private void character() {
@@ -191,16 +188,6 @@ class Scanner {
 
     current++;
     return true;
-  }
-  private boolean match(char... expected) {
-    if (isAtEnd()) return false;
-    for (char c : expected) {
-      if (source.charAt(current) == c) {
-        current++;
-        return true;
-      }
-    }
-    return false;
   }
   private char peek() {
     if (isAtEnd()) return '\0';

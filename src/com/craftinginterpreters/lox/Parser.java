@@ -12,98 +12,99 @@ class Parser {
     private final List<Token> tokens;
     private int current = 0;
     private int nextGlobalOffset;
+    private FunctionTable functionTable;
 
-    Parser(List<Token> tokens, int nextGlobalOffset) {
+    Parser(List<Token> tokens) {
         this.tokens = tokens;
-        this.nextGlobalOffset = nextGlobalOffset;
     }
 
     void parse(Program program) {
+        this.nextGlobalOffset = program.getNextGlobalOffset();
         Function _start = program.get_start();
         SymbolTable globals = program.getGlobals();
-        FunctionTable functionTable = program.getFunctions();
+        functionTable = program.getFunctions();
         while (!isAtEnd()) {
-            declaration(globals, functionTable, _start, -1);
+            declaration(globals, _start, -1);
         }
         Function main = program.getFunction("main");
         _start.addInstruction(new Instruction(call, main.getFid()));
     }
 
-    private Expr expression(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
-        return assignment(symbolTable, functionTable, fn);
+    private Expr expression(SymbolTable symbolTable, Function fn) {
+        return assignment(symbolTable, fn);
     }
 
-    private void declaration(SymbolTable symbolTable, FunctionTable functionTable, Function fn, int while_st) {
+    private void declaration(SymbolTable symbolTable, Function fn, int whileCnt) {
         if (match(FN)) {
-            function(symbolTable, functionTable);
+            function(symbolTable);
             return;
         }
         if (match(LET)) {
-            varDeclaration(symbolTable, functionTable, fn);
+            varDeclaration(symbolTable, fn);
             return;
         }
         if (match(CONST)) {
-            constDeclaration(symbolTable, functionTable, fn);
+            constDeclaration(symbolTable, fn);
             return;
         }
 
-        statement(symbolTable, functionTable, fn, while_st);
+        statement(symbolTable, fn, whileCnt);
     }
 
-    private void statement(SymbolTable symbolTable, FunctionTable functionTable, Function fn, int while_st) {
+    private void statement(SymbolTable symbolTable, Function fn, int whileCnt) {
         if (match(IF)) {
-            ifStatement(symbolTable, functionTable, fn, while_st);
+            ifStatement(symbolTable, fn, whileCnt);
             return;
         }
         if (match(RETURN)) {
-            returnStatement(symbolTable, functionTable, fn);
+            returnStatement(symbolTable, fn);
             return;
         }
         if (match(BREAK)) {
-            if (while_st == -1)
+            if (whileCnt == -1)
                 throw error(peek(), "must break in a while");
             consume(SEMICOLON, "Expect ';'.");
             fn.addInstruction(new Instruction(br, Long.MAX_VALUE));
             return;
         }
         if (match(CONTINUE)) {
-            if (while_st == -1)
+            if (whileCnt == -1)
                 throw error(peek(), "must continue in a while");
             int t = fn.getInstructionCount();
-            fn.addInstruction(new Instruction(br, while_st - t));
+            fn.addInstruction(new Instruction(br, whileCnt - t));
             return;
         }
         if (match(WHILE)) {
-            whileStatement(symbolTable, functionTable, fn);
+            whileStatement(symbolTable, fn);
             return;
         }
         if (match(LEFT_BRACE)) {
             SymbolTable newSymbolTable = new SymbolTable(symbolTable);
-            block(newSymbolTable, functionTable, fn, while_st);
+            block(newSymbolTable, fn, whileCnt);
             return;
         }
         if (match(SEMICOLON)) {
             return;
         }
 
-        expressionStatement(symbolTable, functionTable, fn);
+        expressionStatement(symbolTable, fn);
     }
 
-    private void ifStatement(SymbolTable symbolTable, FunctionTable functionTable, Function fn, int while_st) {
-        Expr condition = expression(symbolTable, functionTable, fn);
+    private void ifStatement(SymbolTable symbolTable, Function fn, int whileCnt) {
+        Expr condition = expression(symbolTable, fn);
         SymbolTable newSymbolTable = new SymbolTable(symbolTable);
         int id = fn.addInstruction(new Instruction(brFalse, 0));
         if (peek().type == LEFT_BRACE) {
-            statement(newSymbolTable, functionTable, fn, while_st);
+            statement(newSymbolTable, fn, whileCnt);
             newSymbolTable.clear();
             if (match(ELSE)) {
                 int id2 = fn.addInstruction(new Instruction(br, 0));
                 Instruction jmp = fn.getInstruction(id);
                 jmp.i64 = id2 - id;
                 if (peek().type == LEFT_BRACE) {
-                    statement(newSymbolTable, functionTable, fn, while_st);
+                    statement(newSymbolTable, fn, whileCnt);
                 } else if (match(IF)) {
-                    ifStatement(symbolTable, functionTable, fn, while_st);
+                    ifStatement(symbolTable, fn, whileCnt);
                 } else {
                     throw error(peek(), "Expect '{' or 'if'");
                 }
@@ -121,11 +122,11 @@ class Parser {
         throw error(peek(), "Expect '{'");
     }
 
-    private void returnStatement(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
+    private void returnStatement(SymbolTable symbolTable, Function fn) {
         if (fn.getReturnType() != Type.VOID)
             fn.addInstruction(new Instruction(arga, 0));
         if (!check(SEMICOLON)) {
-            Expr value = expression(symbolTable, functionTable, fn);
+            Expr value = expression(symbolTable, fn);
             if (value.valType != fn.getReturnType())
                 throw error(peek(), "function return type err");
             if (fn.getReturnType() != Type.VOID)
@@ -136,14 +137,14 @@ class Parser {
         consume(SEMICOLON, "Expect ';' after return value.");
     }
 
-    private void whileStatement(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
+    private void whileStatement(SymbolTable symbolTable, Function fn) {
         int x = fn.addInstruction(new Instruction(nop));
-        Expr condition = expression(symbolTable, functionTable, fn);
+        Expr condition = expression(symbolTable, fn);
         fn.addInstruction(new Instruction(brTrue, 1));
         int id = fn.addInstruction(new Instruction(br, 0));
         SymbolTable newSymbolTable = new SymbolTable(symbolTable);
         if (peek().type == LEFT_BRACE) {
-            statement(newSymbolTable, functionTable, fn, x);
+            statement(newSymbolTable, fn, x);
             int ed = fn.getInstructionCount();
             fn.addInstruction(new Instruction(br, x-ed-1));
             ed = fn.addInstruction(new Instruction(nop));
@@ -160,7 +161,7 @@ class Parser {
             throw error(peek(), "Expect '{'");
     }
 
-    private void varDeclaration(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
+    private void varDeclaration(SymbolTable symbolTable, Function fn) {
         Token name = consume(IDENTIFIER, "Expect variable name.");
         consume(COLON, "Expect ':'");
         Token type = consume(IDENTIFIER, "Expect type");
@@ -181,7 +182,7 @@ class Parser {
                 fn.addInstruction(new Instruction(globa, addr));
             else // Kind.VAR
                 fn.addInstruction(new Instruction(loca, addr));
-            Expr initializer = expression(symbolTable, functionTable, fn);
+            Expr initializer = expression(symbolTable, fn);
             if (initializer.valType != valtype)
                 throw error(peek(), "let lhs and rhs type not matched");
             fn.addInstruction(new Instruction(store64));
@@ -190,7 +191,7 @@ class Parser {
         consume(SEMICOLON, "Expect ';' after variable declaration.");
     }
 
-    private void constDeclaration(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
+    private void constDeclaration(SymbolTable symbolTable, Function fn) {
         Token name = consume(IDENTIFIER, "Expect const name.");
         consume(COLON, "Expect ':'");
         Token type = consume(IDENTIFIER, "Expect type");
@@ -211,7 +212,7 @@ class Parser {
             fn.addInstruction(new Instruction(globa, addr));
         else // Kind.VAR
             fn.addInstruction(new Instruction(loca, addr));
-        Expr initializer = expression(symbolTable, functionTable, fn);
+        Expr initializer = expression(symbolTable, fn);
         if (initializer.valType != valtype)
             throw error(peek(), "let lhs and rhs type not matched");
         fn.addInstruction(new Instruction(store64));
@@ -219,12 +220,12 @@ class Parser {
         consume(SEMICOLON, "Expect ';' after const declaration.");
     }
 
-    private void expressionStatement(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
-        Expr expr = expression(symbolTable, functionTable, fn);
+    private void expressionStatement(SymbolTable symbolTable, Function fn) {
+        Expr expr = expression(symbolTable, fn);
         consume(SEMICOLON, "Expect ';' after expression.");
     }
 
-    private void function(SymbolTable symbolTable, FunctionTable functionTable) {
+    private void function(SymbolTable symbolTable) {
         Function function = new Function();
         SymbolTable newSymbolTable = new SymbolTable(symbolTable);
         Token name = consume(IDENTIFIER, "Expect function name.");
@@ -287,7 +288,7 @@ class Parser {
         }
         function.setFid(functionTable.getNextFid());
         consume(LEFT_BRACE, "Expect '{' before function body.");
-        block(newSymbolTable, functionTable, function, -1);
+        block(newSymbolTable, function, -1);
 
         // return check?
 
@@ -307,15 +308,15 @@ class Parser {
         functionTable.addFunction(function);
     }
 
-    private void block(SymbolTable symbolTable, FunctionTable functionTable, Function fn, int while_st) {
+    private void block(SymbolTable symbolTable, Function fn, int whileCnt) {
         while (!check(RIGHT_BRACE) && !isAtEnd()) {
-            declaration(symbolTable, functionTable, fn, while_st);
+            declaration(symbolTable, fn, whileCnt);
         }
 
         consume(RIGHT_BRACE, "Expect '}' after block.");
     }
 
-    private Expr assignment(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
+    private Expr assignment(SymbolTable symbolTable, Function fn) {
         if (check(IDENTIFIER)) {
             if (peekNext().type == EQUAL) {
                 String name = peek().lexeme;
@@ -333,7 +334,7 @@ class Parser {
                     fn.addInstruction(new Instruction(loca, l_expr.getAddr()));
                 else
                     throw error(peek(), "assign rhs should not be void");
-                Expr value = assignment(symbolTable, functionTable, fn);
+                Expr value = assignment(symbolTable, fn);
                 if (l_expr.getType() != value.valType)
                     throw error(peek(), "l_expr and value type not same");
                 fn.addInstruction(new Instruction(store64));
@@ -341,15 +342,15 @@ class Parser {
             }
         }
 
-        return comparison(symbolTable, functionTable, fn);
+        return comparison(symbolTable, fn);
     }
 
-    private Expr comparison(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
-        Expr expr = term(symbolTable, functionTable, fn);
+    private Expr comparison(SymbolTable symbolTable, Function fn) {
+        Expr expr = term(symbolTable, fn);
 
         while (match(GREATER, GREATER_EQUAL, LESS, LESS_EQUAL, EQUAL_EQUAL, BANG_EQUAL)) {
             Token operator = previous();
-            Expr right = term(symbolTable, functionTable, fn);
+            Expr right = term(symbolTable, fn);
             if (expr.valType != right.valType)
                 throw error(peek(), "comparison type err");
             if (operator.type == LESS_EQUAL) {
@@ -409,12 +410,12 @@ class Parser {
         return expr;
     }
 
-    private Expr term(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
-        Expr expr = factor(symbolTable, functionTable, fn);
+    private Expr term(SymbolTable symbolTable, Function fn) {
+        Expr expr = factor(symbolTable, fn);
 
         while (match(MINUS, PLUS)) {
             Token operator = previous();
-            Expr right = factor(symbolTable, functionTable, fn);
+            Expr right = factor(symbolTable, fn);
             if (expr.valType != right.valType)
                 throw error(peek(), "term type err");
             if (operator.type == PLUS) {
@@ -438,12 +439,12 @@ class Parser {
         return expr;
     }
 
-    private Expr factor(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
-        Expr expr = as(symbolTable, functionTable, fn);
+    private Expr factor(SymbolTable symbolTable, Function fn) {
+        Expr expr = as(symbolTable, fn);
 
         while (match(MUL, DIV)) {
             Token operator = previous();
-            Expr right = as(symbolTable, functionTable, fn);
+            Expr right = as(symbolTable, fn);
             if (expr.valType != right.valType)
                 throw error(peek(), "factor type err");
             if (operator.type == MUL) {
@@ -467,8 +468,8 @@ class Parser {
         return expr;
     }
 
-    private Expr as(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
-        Expr expr = unary(symbolTable, functionTable, fn);
+    private Expr as(SymbolTable symbolTable, Function fn) {
+        Expr expr = unary(symbolTable, fn);
 
         while (match(AS)) {
             if (check(IDENTIFIER)) {
@@ -491,10 +492,10 @@ class Parser {
         return expr;
     }
 
-    private Expr unary(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
+    private Expr unary(SymbolTable symbolTable, Function fn) {
         if (match(MINUS)) {
             Token operator = previous();
-            Expr right = unary(symbolTable, functionTable, fn);
+            Expr right = unary(symbolTable, fn);
             if (right.valType == Type.INT)
                 fn.addInstruction(new Instruction(negi));
             else if (right.valType == Type.DOUBLE)
@@ -504,10 +505,10 @@ class Parser {
             return new Expr.Unary(operator, right);
         }
 
-        return call(symbolTable, functionTable, fn);
+        return call(symbolTable, fn);
     }
 
-    private Expr call(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
+    private Expr call(SymbolTable symbolTable, Function fn) {
         if (peek().type == IDENTIFIER) {
             String name = peek().lexeme;
             switch (name) {
@@ -551,7 +552,7 @@ class Parser {
                     advance();
                     consume(LEFT_PAREN,
                             "Expect '(' after putint.");
-                    if (expression(symbolTable, functionTable, fn).valType != Type.INT)
+                    if (expression(symbolTable, fn).valType != Type.INT)
                         throw error(previous(), "param not match");
                     consume(RIGHT_PAREN,
                             "Expect ')' after '('.");
@@ -562,7 +563,7 @@ class Parser {
                     advance();
                     consume(LEFT_PAREN,
                             "Expect '(' after putdouble.");
-                    if (expression(symbolTable, functionTable, fn).valType != Type.DOUBLE)
+                    if (expression(symbolTable, fn).valType != Type.DOUBLE)
                         throw error(previous(), "param not match");
                     consume(RIGHT_PAREN,
                             "Expect ')' after '('.");
@@ -573,7 +574,7 @@ class Parser {
                     advance();
                     consume(LEFT_PAREN,
                             "Expect '(' after putchar.");
-                    if (expression(symbolTable, functionTable, fn).valType != Type.INT)
+                    if (expression(symbolTable, fn).valType != Type.INT)
                         throw error(previous(), "param not match");
                     consume(RIGHT_PAREN,
                             "Expect ')' after '('.");
@@ -585,7 +586,7 @@ class Parser {
                     consume(LEFT_PAREN,
                             "Expect '(' after putchar.");
                     if (peek().type == STRING)
-                        primary(symbolTable, functionTable, fn);
+                        primary(symbolTable, fn);
                     else if (peek().type != UINT)
                         throw error(peek(), "putstr param must be string or int");
                     consume(RIGHT_PAREN,
@@ -610,7 +611,7 @@ class Parser {
                         if (arguments.size() >= 255) {
                             throw error(peek(), "Can't have more than 255 arguments.");
                         }
-                        arguments.add(expression(symbolTable, functionTable, fn));
+                        arguments.add(expression(symbolTable, fn));
                     } while (match(COMMA));
                 }
 
@@ -622,10 +623,10 @@ class Parser {
             }
         }
 
-        return primary(symbolTable, functionTable, fn);
+        return primary(symbolTable, fn);
     }
 
-    private Expr primary(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
+    private Expr primary(SymbolTable symbolTable, Function fn) {
         if (match(UINT)) {
             fn.addInstruction(new Instruction(push, (long) previous().literal));
             return new Expr.Literal(previous());
@@ -663,7 +664,7 @@ class Parser {
         }
 
         if (match(LEFT_PAREN)) {
-            Expr expr = expression(symbolTable, functionTable, fn);
+            Expr expr = expression(symbolTable, fn);
             consume(RIGHT_PAREN, "Expect ')' after expression.");
             return new Expr.Grouping(expr);
         }

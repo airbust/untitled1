@@ -27,7 +27,7 @@ public class Lox {
     if (hadError) System.exit(65);
 
     Program program = new Program();
-    Parser parser = new Parser(tokens, program.getNextGlobalOffset());
+    Parser parser = new Parser(tokens);
     parser.parse(program);
 
     DataOutputStream out = new DataOutputStream(new FileOutputStream(new File(dest)));
