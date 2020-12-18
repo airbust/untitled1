@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c04d975-9f12-49d5-9350-0e00c6131fc5" name="Default Changelist" comment="" />
+    <list default="true" id="0c04d975-9f12-49d5-9350-0e00c6131fc5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/untitled1/com/craftinginterpreters/lox/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/craftinginterpreters/lox/Parser.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -182,7 +186,7 @@
       <workItem from="1608005565922" duration="4823000" />
       <workItem from="1608129102586" duration="13010000" />
       <workItem from="1608176585843" duration="46583000" />
-      <workItem from="1608265128199" duration="392000" />
+      <workItem from="1608265128199" duration="961000" />
     </task>
     <servers />
   </component>
@@ -218,22 +222,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="792" y="37" width="488" height="587" key="#xdebugger.evaluate/0.0.1280.680@0.0.1280.680" timestamp="1608226038063" />
-    <state width="1237" height="347" key="GridCell.Tab.0.bottom" timestamp="1608265751504">
+    <state width="1237" height="523" key="GridCell.Tab.0.bottom" timestamp="1608266235375">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="347" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1608265751504" />
-    <state width="1237" height="347" key="GridCell.Tab.0.center" timestamp="1608265751503">
+    <state width="1237" height="523" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1608266235375" />
+    <state width="1237" height="523" key="GridCell.Tab.0.center" timestamp="1608266235375">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="347" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1608265751503" />
-    <state width="1237" height="347" key="GridCell.Tab.0.left" timestamp="1608265751503">
+    <state width="1237" height="523" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1608266235375" />
+    <state width="1237" height="523" key="GridCell.Tab.0.left" timestamp="1608266235374">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="347" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1608265751503" />
-    <state width="1237" height="347" key="GridCell.Tab.0.right" timestamp="1608265751504">
+    <state width="1237" height="523" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1608266235374" />
+    <state width="1237" height="523" key="GridCell.Tab.0.right" timestamp="1608266235375">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="347" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1608265751504" />
+    <state width="1237" height="523" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1608266235375" />
     <state width="1237" height="511" key="GridCell.Tab.1.bottom" timestamp="1608229331041">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -254,6 +258,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="119" y="0" width="914" height="680" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1607067199228" />
+    <state x="526" y="145" key="extract.method.dialog" timestamp="1608265922434">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="526" y="145" key="extract.method.dialog/0.0.1280.680@0.0.1280.680" timestamp="1608265922434" />
     <state x="0" y="146" width="638" height="534" key="find.popup" timestamp="1608225408008">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

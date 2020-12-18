@@ -292,22 +292,7 @@ class Parser {
         consume(LEFT_BRACE, "Expect '{' before function body.");
         block(newSymbolTable, functionTable, function, -1);
 
-        // return check
-       /* if (function.getReturnType() != Type.VOID) {
-            if (function.getInstruction(function.getInstructionCount() - 1).getType() != ret)
-                throw error(previous(), "fail return check");
-            int top = 0;
-            for (int i = 0; i < function.getInstructionCount(); i++) {
-                if (function.getInstruction(i).getType() == arga)
-                    top++;
-                else if (function.getInstruction(i).getType() == ret)
-                    top--;
-                if (top < 0)
-                    throw error(previous(), "fail return check");
-            }
-            if (top != 0)
-                throw error(previous(), "fail return check");
-        }*/
+        // return check?
 
         // needed when there is no return in block
         function.addInstruction(new Instruction(ret));
@@ -651,7 +636,7 @@ class Parser {
             fn.addInstruction(new Instruction(push, (double) previous().literal));
             return new Expr.Literal(previous());
         } else if (match(CHAR)) {
-            fn.addInstruction(new Instruction(push, Character.getNumericValue((char) previous().literal)));
+            fn.addInstruction(new Instruction(push, (char) previous().literal));
             return new Expr.Literal(previous());
         } else if (match(STRING)) {
             String value = (String) previous().literal;
