@@ -6,6 +6,27 @@ import java.util.List;
 class Output {
     List<Byte> output = new ArrayList<>();
 
+    static void printIR(Program program) {
+        int sum = program.get_start().getInstructionCount();
+
+        System.out.println("_start:\n");
+        for (Instruction ins : program.get_start().getInstructionList()) {
+            System.out.println(ins);
+        }
+        System.out.println("-------------------");
+
+        for (Function fn : program.getFunctions().getFunctions()) {
+            System.out.println(fn.getName() + ":\n");
+            for (Instruction ins : fn.getInstructionList()) {
+                System.out.println(ins);
+            }
+            sum += fn.getInstructionCount();
+            System.out.println("-------------------");
+        }
+        System.out.println(sum);
+        System.out.println("success!");
+    }
+
     byte[] gen(Program program) {
         output.addAll(int2bytes(4, program.getMagic()));
         output.addAll(int2bytes(4, program.getVersion()));

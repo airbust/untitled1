@@ -446,7 +446,7 @@ class Parser {
 
         while (match(MUL, DIV)) {
             Token operator = previous();
-            Expr right = unary(symbolTable, functionTable, fn);
+            Expr right = as(symbolTable, functionTable, fn);
             if (expr.valType != right.valType)
                 throw error(peek(), "factor type err");
             if (operator.type == MUL) {
