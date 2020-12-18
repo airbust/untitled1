@@ -24,7 +24,7 @@ class Parser {
         SymbolTable globals = program.getGlobals();
         FunctionTable functionTable = program.getFunctions();
         while (!isAtEnd()) {
-            declaration(globals, functionTable, _start);
+            declaration(globals, functionTable, _start, -1);
         }
         Function main = program.getFunction("main");
         _start.addInstruction(new Instruction(call, main.getFid()));
@@ -34,7 +34,7 @@ class Parser {
         return assignment(symbolTable, functionTable, fn);
     }
 
-    private void declaration(SymbolTable symbolTable, FunctionTable functionTable, Function fn) {
+    private void declaration(SymbolTable symbolTable, FunctionTable functionTable, Function fn, int while_st) {
         if (match(FN)) {
             function(symbolTable, functionTable);
             return;
@@ -48,7 +48,7 @@ class Parser {
             return;
         }
 
-        statement(symbolTable, functionTable, fn, -1);
+        statement(symbolTable, functionTable, fn, while_st);
     }
 
     private void statement(SymbolTable symbolTable, FunctionTable functionTable, Function fn, int while_st) {
@@ -327,7 +327,7 @@ class Parser {
 
     private void block(SymbolTable symbolTable, FunctionTable functionTable, Function fn, int while_st) {
         while (!check(RIGHT_BRACE) && !isAtEnd()) {
-            declaration(symbolTable, functionTable, fn);
+            declaration(symbolTable, functionTable, fn, while_st);
         }
 
         consume(RIGHT_BRACE, "Expect '}' after block.");
