@@ -293,7 +293,7 @@ class Parser {
         block(newSymbolTable, functionTable, function, -1);
 
         // return check
-        if (function.getReturnType() != Type.VOID) {
+       /* if (function.getReturnType() != Type.VOID) {
             if (function.getInstruction(function.getInstructionCount() - 1).getType() != ret)
                 throw error(previous(), "fail return check");
             int top = 0;
@@ -307,7 +307,7 @@ class Parser {
             }
             if (top != 0)
                 throw error(previous(), "fail return check");
-        }
+        }*/
 
         // needed when there is no return in block
         function.addInstruction(new Instruction(ret));
