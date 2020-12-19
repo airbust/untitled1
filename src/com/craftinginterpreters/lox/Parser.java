@@ -1,7 +1,6 @@
 package com.craftinginterpreters.lox;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static com.craftinginterpreters.lox.TokenType.*;
 import static com.craftinginterpreters.lox.InstructionType.*;
@@ -290,10 +289,58 @@ class Parser {
         consume(LEFT_BRACE, "Expect '{' before function body.");
         block(newSymbolTable, function, -1);
 
-        // return check?
+        // needed when there is no return in block and return type is void
+        if (function.getReturnType() == Type.VOID)
+            function.addInstruction(new Instruction(ret));
+        else
+            function.addInstruction(new Instruction(nop));
 
-        // needed when there is no return in block
-        function.addInstruction(new Instruction(ret));
+        // return check
+        if (function.getReturnType() != Type.VOID) {
+            Set<Integer> tmp = new TreeSet<>();
+            tmp.add(0);
+            for (int i = 0; i < function.getInstructionCount(); i++) {
+                Instruction ins = function.getInstruction(i);
+                if (ins.isJmp()) {
+                    tmp.add(i+1);
+                    if (ins.isBr())
+                        tmp.add(i+1 + (int) ins.i64);
+                }
+            }
+
+            List<Integer> basicBlockStart = new ArrayList<>(tmp);
+            List<Integer>[] adj = new ArrayList[basicBlockStart.size()];
+            Map<Integer, Integer> mp = new HashMap<>();
+            for (int i = 0; i < basicBlockStart.size(); i++) {
+                adj[i] = new ArrayList<>();
+                mp.put(basicBlockStart.get(i), i);
+            }
+
+            for (int i = 0; i+1 < basicBlockStart.size(); i++) {
+                int ip = basicBlockStart.get(i+1);
+                Instruction ins = function.getInstruction(ip - 1);
+                if (ins.isJmp()) {
+                    if (ins.isBr())
+                        adj[i].add(mp.get(ip + (int) ins.i64));
+                    if (!ins.isUnconditionalJmp())
+                        adj[i].add(i+1);
+                } else
+                    adj[i].add(i+1);
+            }
+            boolean[] vis = new boolean[adj.length];
+            List<Integer> res = new ArrayList<>();
+            dfs(adj, vis, 0, res);
+            for (int x : res) {
+                int id;
+                if (x+1 < basicBlockStart.size())
+                    id = basicBlockStart.get(x+1) - 1;
+                else
+                    id = basicBlockStart.size() - 1;
+                if (function.getInstruction(id).getOp() != ret.getNum())
+                    throw error(previous(), "fail return check");
+            }
+        }
+
         SymbolTable global = symbolTable.getGlobal();
         Variable fn_name = new Variable();
         fn_name.setName("");
@@ -715,6 +762,17 @@ class Parser {
 
     private Token previous() {
         return tokens.get(current - 1);
+    }
+
+    private void dfs(List<Integer>[] adj, boolean[] vis, int u, List<Integer> res) {
+        vis[u] = true;
+        if (adj[u].size() == 0)
+            res.add(u);
+        for (int i = 0; i < adj[u].size(); i++) {
+            if (!vis[adj[u].get(i)]) {
+                dfs(adj, vis, adj[u].get(i), res);
+            }
+        }
     }
 
     private ParseError error(Token token, String message) {

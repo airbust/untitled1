@@ -17,8 +17,11 @@ class Output {
 
         for (Function fn : program.getFunctions().getFunctions()) {
             System.out.println(fn.getName() + ":\n");
+            int cnt = 0;
             for (Instruction ins : fn.getInstructionList()) {
+                System.out.print(cnt + " ");
                 System.out.println(ins);
+                cnt++;
             }
             sum += fn.getInstructionCount();
             System.out.println("-------------------");

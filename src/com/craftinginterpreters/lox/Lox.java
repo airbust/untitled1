@@ -33,6 +33,8 @@ public class Lox {
     DataOutputStream out = new DataOutputStream(new FileOutputStream(new File(dest)));
     byte[] res = new Output().gen(program);
     out.write(res);
+
+    Output.printIR(program);
   }
 
   static void error(int line, String message) {

@@ -1,5 +1,7 @@
 package com.craftinginterpreters.lox;
 
+import static com.craftinginterpreters.lox.InstructionType.*;
+
 class Instruction {
     private InstructionType instructionType;
     long i64 = Long.MIN_VALUE;
@@ -29,8 +31,27 @@ class Instruction {
         return instructionType.getNum();
     }
 
+    boolean isJmp() {
+        return instructionType == br || instructionType == brFalse
+                || instructionType == brTrue || instructionType == ret
+                || instructionType == call || instructionType == callname;
+    }
+
+    boolean isUnconditionalJmp() {
+        return instructionType == br || instructionType == ret;
+    }
+
+    boolean isBr() {
+        return instructionType == br || instructionType == brTrue || instructionType == brFalse;
+    }
+
     @Override
     public String toString() {
-       return instructionType.toString() + " " + i64;
+        if (i64 == Long.MIN_VALUE && f64 == Double.MAX_VALUE)
+            return instructionType.toString();
+        else if (i64 != Long.MIN_VALUE)
+            return instructionType.toString() + " " + i64;
+        else
+            return instructionType.toString() + " " + f64;
     }
 }
